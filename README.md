@@ -1,3 +1,4 @@
-# chatgpt project
-this project is among the first of a few chatgpt projects i will do
-if i finish this then its great ig
+# PROJECT BUSCESS SINGAPORE
+This project is about creating a hub for transport enthusiasts in Singapore to post their bus and train photos here.
+
+# TABLE OF CONTENTS
