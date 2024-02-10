@@ -4,18 +4,19 @@
   "description": "this project is among the first of a few chatgpt projects i will do if i finish this then its great ig",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "init_tables": "node src/config/createSchema.js && node src/config/initTables.js"
   },
   "author": "spicychillisus",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/spicychillisus/ecommerce-chatgpt.git"
+    "url": "git+https://github.com/spicychillisus/project-buscess-singapore.git"
   },
   "bugs": {
-    "url": "https://github.com/spicychillisus/ecommerce-chatgpt/issues"
+    "url": "https://github.com/spicychillisus/project-buscess-singapore/issues"
   },
-  "homepage": "https://github.com/spicychillisus/ecommerce-chatgpt#readme",
+  "homepage": "https://github.com/spicychillisus/project-buscess-singapore#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.1",
@@ -25,5 +26,6 @@
     "nodemon": "^3.0.3",
     "readline-sync": "^1.4.10",
     "supertest": "^6.3.4"
-  }
+  },
+  "devDependencies": {}
 }

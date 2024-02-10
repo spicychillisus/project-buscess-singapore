@@ -20,15 +20,17 @@ bcrypt.hash('devtest', saltRounds, (error, hash) => {
     console.log("Hashed password:", hash);
     
   const SQLSTATEMENT = `
-    DROP TABLE IF EXISTS users;
+  DROP TABLE IF EXISTS users;
     
     CREATE TABLE users (
         user_id INT PRIMARY KEY AUTO_INCREMENT,
+        user_code INT NOT NULL,
         username TEXT,
         email TEXT,
         password TEXT,
         role TEXT,
-        rank TEXT
+        points INT NOT NULL,
+        ranks TEXT
     );
 
     DROP TABLE IF EXISTS posts;
@@ -65,7 +67,7 @@ bcrypt.hash('devtest', saltRounds, (error, hash) => {
     DROP TABLE IF EXISTS train_models;
 
     CREATE TABLE train_models (
-      train_id INT PRIMARY KEY AUTO INCREMENT,
+      train_id INT PRIMARY KEY AUTO_INCREMENT,
       train_code INT NOT NULL,
       train_name TEXT,
       train_debut_year INT NOT NULL,
@@ -84,7 +86,7 @@ bcrypt.hash('devtest', saltRounds, (error, hash) => {
 
     CREATE TABLE vehicle_operation_updates (
       vehicle_model TEXT,
-      bus_plate TEXT
+      bus_plate TEXT,
       vehicle_update_description TEXT
     );
 
@@ -109,17 +111,32 @@ bcrypt.hash('devtest', saltRounds, (error, hash) => {
 
     CREATE TABLE train_operation_updates (
       train_model TEXT,
-      train_set_number INT NOT NULL
+      train_set_number INT NOT NULL,
       train_ops_status TEXT
     );
 
+    DROP TABLE IF EXISTS points_management;
+    CREATE TABLE points_management (
+      user_code INT NOT NULL,
+      points_acquired INT NOT NULL
+    );
 
-    
-    INSERT INTO User (username, email, password) VALUES
-    ("devtest", "admin@hotmail.com", "${hash}");
+    DROP TABLE IF EXISTS points_allocation;
+    CREATE TABLE points_allocation (
+      task_id INT PRIMARY KEY AUTO_INCREMENT,
+      task_name TEXT,
+      description TEXT,
+      points_awarded TEXT
+    );
+
+    DROP TABLE IF EXISTS ranks;
+    CREATE TABLE ranks (
+      ranks_available TEXT,
+      points_requirement INT NOT NULL
+    );
     
     INSERT INTO website_updates (update_name, update_description) VALUES
-    ("The First Update", "The very first update of this website. We'll be looking forward for more to come very soon!")
+    ("The First Update", "The very first update of this website. We'll be looking forward for more to come very soon!");
     
       `
 
