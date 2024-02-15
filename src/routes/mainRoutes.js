@@ -10,7 +10,7 @@ const updateRoutes = require('./updateRoutes');
 const vehicleRoutes = require('./vehicleRoutes');
 const websiteRoutes = require('./websiteRoutes');
 
-router.use('/user', userRoutes);
+router.use('/users', userRoutes);
 router.use('/forum', forumRoutes);
 router.use('/post', postRoutes);
 router.use('/points', pointsRoutes);

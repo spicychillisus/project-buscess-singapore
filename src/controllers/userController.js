@@ -17,7 +17,7 @@ there are two types of users: admin and user
 there is a third one: dev, but it's a special one that is only given to the developer himself, or if he wants to give it to someone else
  */
 
-module.exports.createNormalUser = (req, res) => {
+module.exports.createNormalUser = (req, res, next) => {
     const data = {
         user_code: res.locals.code,
         username: req.body.username,
@@ -41,16 +41,21 @@ module.exports.createNormalUser = (req, res) => {
             })
             console.error(err);
         } else {
-            res.status(200).json({
-                message: "User created successfully"
-            })
+            next();
         }
     })
 
 
 }
 
-module.exports.createAdministrator = (req, res) => {
+// allows users of any kind to edit their own information
+module.exports.editUser = (req, res) => {
+    
+}
+
+// administrators automatically have 999999 points and the rank of forum grandmaster
+// this is to make sure that they have the highest authority in the forum
+module.exports.createAdministrator = (req, res, next) => {
     const data = {
         user_code: res.locals.code,
         username: req.body.username,
@@ -67,16 +72,14 @@ module.exports.createAdministrator = (req, res) => {
         })
     }
 
-    model.createUser(data, (err, result) => {
+    model.createAdministrator(data, (err, result) => {
         if (err) {
             res.status(500).json({
                 message: "Error creating user"
             })
             console.error(err);
         } else {
-            res.status(200).json({
-                message: "User created successfully"
-            })
+            next();
         }
     })
 
