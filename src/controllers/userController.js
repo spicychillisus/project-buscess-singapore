@@ -50,7 +50,11 @@ module.exports.createNormalUser = (req, res, next) => {
 
 // allows users of any kind to edit their own information
 module.exports.editUser = (req, res) => {
-    
+    const data = {
+        username: req.body.username,
+        email: req.body.email,
+        password: req.body.password
+    }
 }
 
 // administrators automatically have 999999 points and the rank of forum grandmaster
