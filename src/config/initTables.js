@@ -135,7 +135,7 @@ bcrypt.hash('devtest', saltRounds, (error, hash) => {
       points_requirement INT NOT NULL
     );
     
-    INSERT INTO website_updates (update_name, update_description) VALUES
+    INSERT INTO ranks (ranks_available, points_requirement) VALUES
     ("The First Update", "The very first update of this website. We'll be looking forward for more to come very soon!");
     
       `
