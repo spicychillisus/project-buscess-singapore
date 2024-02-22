@@ -6,7 +6,7 @@ const postRoutes = require('./postRoutes');
 const pointsRoutes = require('./pointsRoutes');
 const rankRoutes = require('./rankRoutes');
 const trainRoutes = require('./trainRoutes');
-const updateRoutes = require('./updateRoutes');
+const updateRoutes = require('./updatesRoutes');
 const vehicleRoutes = require('./vehicleRoutes');
 const websiteRoutes = require('./websiteRoutes');
 

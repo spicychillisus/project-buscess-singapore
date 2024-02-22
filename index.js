@@ -10,14 +10,30 @@ app.get('/api/train_data', (req, res) => {
     fs.createReadStream('developers/data/train_models.csv')
         .pipe(csv())
         .on('data', (data) => {
-            csvTrainData.push(data)
+            csvTrainData.push(data);
         })
+        .on('end', () => {
+            // Send the JSON data as the response
+            res.json(csvTrainData);
+        })
+        .on('error', (err) => {
+            console.error('Error parsing CSV file:', err);
+            res.status(500).send('Error parsing CSV file');
+        });
+
 
 })
 
+const welcomeMessage = `
+    Welcome to TravelTalk (Developer's Edition).\n
+    If you're seeing this message, it means the server is successfully 
+    You are now running this website at port ${PORT}.\n
+    Please open this server in your browser by typing in:\n
+    localhost:${PORT}
+    `
 
 app.listen(PORT, () => {
-    console.log(`app listening to port ${PORT}`)
+    console.log(welcomeMessage)
 })
 
 
