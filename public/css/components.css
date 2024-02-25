@@ -1,3 +1,15 @@
+
+body {
+    height: 1005px;
+    background-image: url(../images/random_images/2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+
+/* logo */
 #menulogo {
     width: 60%;
     justify-content: center;
@@ -5,3 +17,34 @@
     margin: 3px;
     right: 100px;
 }
+
+/* login components */
+.LoginPart {
+    width: 795px;
+    height: 1017px;
+    position: fixed;
+}
+
+.Background {
+    width: 795px;
+    height: 909px;
+    left: 0px;
+    top: 0px;
+    position: fixed;
+    background: linear-gradient(135deg, #E8E8E8 0%, white 100%);
+    box-shadow: 6px 6px 15px rgba(144, 144, 144, 0.90);
+    border-radius: 0px 58px 58px 0px;
+}
+
+.login-button {
+    width: 125px; 
+    height: 33px; 
+    left: 400px; 
+    top: 652px; 
+    position: absolute; 
+    background: #659127; 
+    border-radius: 14px;
+    box-shadow: -4px -4px 10px rgba(59, 84, 23, 0.90) inset;
+    border: none;
+}
+

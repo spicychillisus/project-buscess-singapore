@@ -134,10 +134,15 @@ bcrypt.hash('devtest', saltRounds, (error, hash) => {
       ranks_available TEXT,
       points_requirement INT NOT NULL
     );
-    
-    INSERT INTO ranks (ranks_available, points_requirement) VALUES
-    ("The First Update", "The very first update of this website. We'll be looking forward for more to come very soon!");
-    
+
+    DROP TABLE IF EXISTS forums;
+    CREATE TABLE forums (
+      forum_id INT PRIMARY KEY AUTO_INCREMENT,
+      forum_name TEXT,
+      forum_short TEXT,
+      forum_followers INT NOT NULL
+    );
+  
       `
 
     pool.query(SQLSTATEMENT, callback);
