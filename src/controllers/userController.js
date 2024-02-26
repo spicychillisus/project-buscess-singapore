@@ -58,6 +58,25 @@ module.exports.editUser = (req, res) => {
         email: req.body.email,
         password: req.body.password
     }
+
+    if (req.body.username == undefined || req.body.email == undefined || req.body.password == undefined) {
+        res.status(400).json({
+            message: "Please fill in all the fields"
+        })
+    }
+
+    model.editUser(data, (err, result) => {
+        if (err) {
+            res.status(500).json({
+                message: "Error editing user"
+            })
+            console.error(err);
+        } else {
+            res.status(200).json({
+                message: "User edited successfully"
+            })
+        }
+    })
 }
 
 // will be implemented when the website is ready and is hosted
@@ -116,10 +135,6 @@ module.exports.editUser = (req, res) => {
             })
             console.error(err);
         })
-
-    
-
-
 
 } */
 
