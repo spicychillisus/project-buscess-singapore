@@ -60,7 +60,8 @@ module.exports.editUser = (req, res) => {
     }
 }
 
-module.exports.forgetPassword = (req, res) => {
+// will be implemented when the website is ready and is hosted
+/* module.exports.forgetPassword = (req, res) => {
     const data = {
         username: req.body.username,
         email: req.body.email,
@@ -120,5 +121,5 @@ module.exports.forgetPassword = (req, res) => {
 
 
 
-}
+} */
 
