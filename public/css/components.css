@@ -1,21 +1,20 @@
 
-body {
+#login-background {
     height: 1005px;
-    background-image: url(../images/random_images/2.jpg);
+    background-image: url(../images/login.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     overflow: hidden;
 }
 
+/* login page components */
 
 /* logo */
 #menulogo {
-    width: 60%;
-    justify-content: center;
-    padding: 4px;
-    margin: 3px;
-    right: 100px;
+    width: 87px;
+    height: 52px;
+    
 }
 
 /* login components */
@@ -44,7 +43,63 @@ body {
     position: absolute; 
     background: #659127; 
     border-radius: 14px;
-    box-shadow: -4px -4px 10px rgba(59, 84, 23, 0.90) inset;
+    box-shadow: -1px -1px 3px rgba(59, 84, 23, 0.90) inset;
     border: none;
 }
+
+.login-text {
+    color: white;
+}
+
+.login-button:hover {
+    width: 125px; 
+    height: 33px; 
+    left: 400px; 
+    top: 652px; 
+    position: absolute; 
+    background: #659127; 
+    border-radius: 14px;
+    box-shadow: -1px -1px 3px rgba(59, 84, 23, 0.90);
+    border: none;
+}
+
+#usernameLabel {
+    width: 85px; 
+    height: 13px; 
+    left: 299px; 
+    top: 365px; 
+    position: absolute;
+}
+
+#usernameInput {
+    width: 341px; 
+    height: 30px; 
+    left: 292px; 
+    top: 390px; 
+    position: absolute; 
+    background: #CACACA; 
+    border-radius: 14px;
+    box-shadow: 2px 2px 5px rgba(117, 117, 117, 0.90) inset;
+}
+
+#passwordInput {
+    width: 341px; 
+    height: 30px; 
+    left: 292px; 
+    top: 487px; 
+    position: absolute; 
+    background: #CACACA; 
+    border-radius: 14px;
+    box-shadow: 2px 2px 5px rgba(117, 117, 117, 0.90) inset;
+}
+
+#passwordLabel {
+    width: 85px; 
+    height: 13px; 
+    left: 292px; 
+    top: 460px; 
+    position: absolute;
+}
+
+/* search bar */
 

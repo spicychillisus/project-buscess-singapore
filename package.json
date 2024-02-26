@@ -4,7 +4,6 @@
   "description": "this project is among the first of a few chatgpt projects i will do if i finish this then its great ig",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "init_tables": "node src/config/createSchema.js && node src/config/initTables.js"
   },
   "author": "spicychillisus",
@@ -28,8 +27,10 @@
     "fs": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.1",
+    "nodemailer": "^6.9.10",
     "nodemon": "^3.0.3",
     "readline-sync": "^1.4.10",
-    "supertest": "^6.3.4"
+    "supertest": "^6.3.4",
+    "uuid": "^9.0.1"
   }
 }

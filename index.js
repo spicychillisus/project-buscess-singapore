@@ -24,6 +24,8 @@ app.get('/api/train_data', (req, res) => {
 
 })
 
+
+
 const welcomeMessage = `
     Welcome to TravelTalk (Developer's Edition).\n
     If you're seeing this message, it means the server is successfully 

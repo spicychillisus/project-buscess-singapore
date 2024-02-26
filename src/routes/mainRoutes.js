@@ -1,4 +1,6 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+
 const router = express();
 const userRoutes = require('./userRoutes');
 const forumRoutes = require('./forumRoutes');
@@ -20,7 +22,11 @@ router.use('/update', updateRoutes);
 router.use('/vehicle', vehicleRoutes);
 router.use('/website', websiteRoutes);
 
-
+const userController = require('../controllers/userController');
 // login and register routes
 router.post('/login')
 router.post('/register')
+
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+router.post('/forgetPassword', userController.forgetPassword)
