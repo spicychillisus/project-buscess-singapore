@@ -1,8 +1,8 @@
 
 const model = require('../models/userModel');
-const bodyParser = require('body-parser');
+/* const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer')
-const uuidv4 = require('uuid')
+const uuidv4 = require('uuid') */
 
 // generating the user code for administrative uses
 module.exports.generateUserCode = (req, res, next) => {
@@ -20,7 +20,7 @@ there are two types of users: admin and user
 there is a third one: dev, but it's a special one that is only given to the developer himself, or if he wants to give it to someone else
  */
 
-module.exports.createNormalUser = (req, res, next) => {
+module.exports.createUser = (req, res, next) => {
     const data = {
         user_code: res.locals.code,
         username: req.body.username,
@@ -44,7 +44,9 @@ module.exports.createNormalUser = (req, res, next) => {
             })
             console.error(err);
         } else {
-            next();
+            res.status(200).json({
+                message: "User created successfully"
+            })
         }
     })
 
@@ -79,6 +81,34 @@ module.exports.editUser = (req, res) => {
     })
 }
 
+module.exports.getUser = (req,res) => {
+    // get the user data by using the user_id
+    const data = {
+        user_id: req.params.user_id
+    }
+
+    if (req.params.user_id == undefined) {
+        res.status(400).json({
+            message: "User cannot be defined"
+        })
+    }
+
+    model.getUser(data, (err, result) => {
+        if (err) {
+            res.status(500).json({
+                message: "Error getting user"
+            })
+            console.error(err);
+        } else {
+            res.status(200).json({
+                message: "User found",
+                user: result
+            })
+        }
+    })
+
+}
+
 // will be implemented when the website is ready and is hosted
 /* module.exports.forgetPassword = (req, res) => {
     const data = {
@@ -102,13 +132,13 @@ module.exports.editUser = (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'haerinkang475@gmail.com',
-                pass: 'SMB3333M',
+                user: 'tehpengbot@gmail.com',
+                pass: 'hannibot2004',
             },
         });
 
         const mailOptions = {
-            from: 'haerinkang475@gmail.com',
+            from: 'tehpengbot@gmail.com',
             to: userEmail,
             subject: 'Password Reset',
             // content in the email
