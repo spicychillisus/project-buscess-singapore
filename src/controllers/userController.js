@@ -1,28 +1,13 @@
 
 const model = require('../models/userModel');
-/* const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer')
-const uuidv4 = require('uuid') */
+const uuidv4 = require('uuid')
 
-// generating the user code for administrative uses
-module.exports.generateUserCode = (req, res, next) => {
-    var code = Math.floor(Math.random() * 10000);
-    code = res.locals.code;
-    res.status(200).json({
-        code: code
-    });
-    next();
-}
-
-/* 
-creating user
-there are two types of users: admin and user
-there is a third one: dev, but it's a special one that is only given to the developer himself, or if he wants to give it to someone else
- */
 
 module.exports.createUser = (req, res, next) => {
     const data = {
-        user_code: res.locals.code,
+        user_code: code,
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
@@ -30,6 +15,8 @@ module.exports.createUser = (req, res, next) => {
         points: 0,
         rank: "newcomer"
     }
+
+    var code = Math.floor(Math.random() * 10000);
 
     if (req.body.username == undefined || req.body.email == undefined || req.body.password == undefined) {
         res.status(400).json({
@@ -45,8 +32,16 @@ module.exports.createUser = (req, res, next) => {
             console.error(err);
         } else {
             res.status(200).json({
-                message: "User created successfully"
+                message: "User created successfully",
+                user_code: res.locals.code,
+                username: req.body.username,
+                email: req.body.email,
+                password: req.body.password,
+                role: "user",
+                points: 0,
+                rank: "newcomer"
             })
+
         }
     })
 
@@ -110,7 +105,7 @@ module.exports.getUser = (req,res) => {
 }
 
 // will be implemented when the website is ready and is hosted
-/* module.exports.forgetPassword = (req, res) => {
+module.exports.forgetPassword = (req, res) => {
     const data = {
         username: req.body.username,
         email: req.body.email,
@@ -166,5 +161,5 @@ module.exports.getUser = (req,res) => {
             console.error(err);
         })
 
-} */
+}
 
