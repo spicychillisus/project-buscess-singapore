@@ -28,10 +28,11 @@ app.get('/api/train_data', (req, res) => {
 
 const welcomeMessage = `
     Welcome to TravelTalk (Developer's Edition).\n
-    If you're seeing this message, it means the server is successfully 
+    If you're seeing this message, it means the server is successfully running.\n
     You are now running this website at port ${PORT}.\n
     Please open this server in your browser by typing in:\n
     localhost:${PORT}
+    You should be able to see the home page of the website.
     `
 
 app.listen(PORT, () => {

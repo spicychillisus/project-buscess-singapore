@@ -4,25 +4,19 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer')
 const uuidv4 = require('uuid')
 
-
-module.exports.createUser = (req, res, next) => {
+module.exports.createUser = (req, res) => {
     const data = {
-        user_code: code,
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
-        role: "user",
-        points: 0,
-        rank: "newcomer"
     }
-
-    var code = Math.floor(Math.random() * 10000);
 
     if (req.body.username == undefined || req.body.email == undefined || req.body.password == undefined) {
         res.status(400).json({
             message: "Please fill in all the fields"
         })
     }
+
 
     model.createUser(data, (err, result) => {
         if (err) {
@@ -33,7 +27,6 @@ module.exports.createUser = (req, res, next) => {
         } else {
             res.status(200).json({
                 message: "User created successfully",
-                user_code: res.locals.code,
                 username: req.body.username,
                 email: req.body.email,
                 password: req.body.password,
@@ -41,11 +34,30 @@ module.exports.createUser = (req, res, next) => {
                 points: 0,
                 rank: "newcomer"
             })
-
         }
     })
 
+}
 
+module.exports.generateUserCode = (req, res, next) => {
+    const data = {
+        user_code: req.body.user_code
+    }
+
+    model.generateUserCode(data, (err, result) => {
+        if (err) {
+            res.status(500).json({
+                message: "Error generating user code"
+            })
+            console.error(err);
+        } else {
+            res.status(200).json({
+                message: "User code generated successfully",
+                user_code: result[0].user_code
+            })
+        }
+    
+    })
 }
 
 // allows users of any kind to edit their own information

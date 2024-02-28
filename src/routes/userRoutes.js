@@ -2,6 +2,7 @@ const controller = require('../controllers/userController');
 const express = require('express');
 const router = express.Router();
 
-router.post('/',controller.createUser);
+// user related routes
+router.post('/', controller.createUser);
 
 module.exports = router;

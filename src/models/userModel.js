@@ -2,10 +2,11 @@ const pool = require('../services/db');
 
 module.exports.createUser = (data) => {
     const SQLSTATEMENT = `
-    INSERT INTO users (user_code, username, email, password, role, points, rank)
-    VALUES (?, ?, ?, ?, ?, ?, ?);
+    INSERT INTO users (user_code, username, email, password, role, points, ranks)
+    VALUES (?, ?, ?, ?, "user", 0, "newcomer");
     `;
-    const values = [data.user_code, data.username, data.email, data.password, data.role, data.points, data.rank];
+    const dataInsert = Math.floor(Math.random() * 9000) + 1000;
+    const values = [dataInsert, data.username, data.email, data.password, data.role, data.points, data.ranks];
     pool.query(SQLSTATEMENT, values, (error, results) => {
         if (error) {
             throw error;
@@ -14,6 +15,23 @@ module.exports.createUser = (data) => {
         }
     });
 }
+
+/* module.exports.generateUserCode = (data) => {
+    const SQLSTATEMENT = `
+    INSERT INTO users (user_code) VALUES (?);
+    `;
+
+    const dataInsert = Math.floor(Math.random() * 9000) + 1000;
+    const values = [dataInsert];
+    pool.query(SQLSTATEMENT, values, (error, results) => {
+        if (error) {
+            throw error;
+        } else {
+            return results;
+        }
+    });
+
+} */
 
 module.exports.editUser = (data) => {
     const SQLSTATEMENT = `
