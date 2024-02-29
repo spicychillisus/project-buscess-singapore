@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run init_tables",
-    "init_tables": "node src/configs/createSchema.js && node src/configs/initTables.js",
+    "init_tables": "node src/config/createSchema.js && node src/config/initTables.js",
     "dev": "nodemon index.js",
     "start": "node index.js"
   },

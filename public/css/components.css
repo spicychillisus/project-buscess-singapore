@@ -102,4 +102,13 @@
 }
 
 /* search bar */
-
+#searchBar {
+    width: 1400px; 
+    height: 50px;  
+    top: 12px;
+    right: 1px; 
+    position: absolute; 
+    background: white;
+    border-radius: 210px;
+    display: flex;
+}
