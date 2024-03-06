@@ -1,6 +1,6 @@
 
 const model = require('../models/userModel');
-const bodyParser = require('body-parser');
+//const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer')
 const uuidv4 = require('uuid')
 
@@ -96,6 +96,7 @@ module.exports.createUser = (req, res) => {
 
 module.exports.editUsername = (req, res) => {
     const data = {
+        user_id: req.params.user_id,
         username: req.body.username
     }
 
@@ -104,4 +105,48 @@ module.exports.editUsername = (req, res) => {
             message: "Please enter a new username"
         })
     }
+
+    const callback = (error, result) => {
+        if (error) {
+            res.status(500).json({
+                message: "Error editing username"
+            })
+            console.error(error);
+        } else {
+            res.status(200).json({
+                message: "Username edited"
+            })
+        }
+    }
+    model.editUsername(data, callback);
+}
+
+module.exports.getUser = (req, res) => {
+    const data = {
+        user_id: req.params.user_id
+    }
+
+    if (req.params.user_id == undefined) {
+        res.status(400).json({
+            message: "user id cannot be identified"
+        })
+    }
+
+    const callback = (error, result) => {
+        if (error) {
+            res.status(500).json({
+                message: "Error getting user"
+            })
+            console.error(error);
+        } else {
+            res.status(200).json(result)
+        }
+    }
+
+    model.getUser(data, callback)
+        
+}
+
+module.exports.checkForDuplicateUsername = (req, res) => {
+
 }

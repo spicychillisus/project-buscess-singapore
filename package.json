@@ -35,5 +35,8 @@
     "readline-sync": "^1.4.10",
     "supertest": "^6.3.4",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
   }
 }

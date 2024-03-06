@@ -22,16 +22,15 @@ bcrypt.hash('devtest', saltRounds, (error, hash) => {
   const SQLSTATEMENT = `
   DROP TABLE IF EXISTS users;
     
-    CREATE TABLE users (
-        user_id INT PRIMARY KEY AUTO_INCREMENT,
-        user_code INT NOT NULL,
-        username TEXT,
-        email TEXT,
-        password TEXT,
-        role TEXT,
-        points INT NOT NULL,
-        ranks TEXT
-    );
+  CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username TEXT,
+    email TEXT,
+    password TEXT,
+    role TEXT,
+    points INT NOT NULL,
+    ranks TEXT
+);
 
   
       `
